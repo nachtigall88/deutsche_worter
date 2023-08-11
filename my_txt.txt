@@ -1,0 +1,4 @@
+das, Buch, книга
+das, Madchen, дівча
+der, Lehrer, вчитель
+die, Stunde, заняття
