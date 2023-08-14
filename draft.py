@@ -1,10 +1,18 @@
-from random import randint
+with open('try.txt', ) as file:
+    pass
 
-with open('my_txt.txt', 'r') as file:
-    seq = [x for x in file.readlines()]
-    res = seq[randint(0, len(seq) - 1)]
+# with open('try.txt','r') as rfile:
+#     for i in rfile.readlines():
+#         print(i, end='')
 
-var = 'xx'
-print(seq)
-print(res)
-print(any(map(lambda x: var in x, seq)))
+with open('try.txt', 'r') as mfile:
+    res = mfile.readlines()
+    print([x for x in res])
+
+with open('try.txt', 'r') as rfile:
+    res = [x for x in rfile]
+    print('aaa' in res)
+
+# with open('try.txt','r') as file:
+#     for i in file.readlines():
+#         print(i)
