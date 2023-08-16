@@ -9,7 +9,7 @@ def rule_entries():
     функція для ввімкнення/вимкнення ентрі-полів для вводу інформації ""
     :return:
     """
-    for i in [art_entry, word_entry, transl_entry]:
+    for i in [art_cb, word_entry, transl_entry]:
         if varint.get() == 1:
             i.config(state='normal')
         else:
@@ -34,8 +34,9 @@ frame = tk.LabelFrame(root, text='isert data', fg='yellow', bg='black')
 frame.grid(row=7, column=1)
 empty_label = tk.Label(text='empty data', bg='black', fg='black', height=5)
 empty_label.grid(row=6, column=1)
-art_entry = tk.Entry(frame, width=9, state='disabled')
-art_entry.grid(row=0, column=1)
+art_cb = ttk.Combobox(frame, width=9, state='disabled', values=['---', 'das', 'die', 'der'])
+art_cb.current(0)
+art_cb.grid(row=0, column=1)
 word_entry = tk.Entry(frame, width=20, state='disabled')
 word_entry.grid(row=0, column=2)
 transl_entry = tk.Entry(frame, width=20, state='disabled')
@@ -57,4 +58,4 @@ if __name__ == '__main__':
     # sw5 = SingleWord('richtig', 'вірно')
     # for i in [sw, sw2, sw3, sw4, sw5]:
     #     wb(i)
-    # root.mainloop()
+    root.mainloop()

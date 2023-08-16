@@ -63,7 +63,7 @@ class WordBase:
             seq = [x for x in file.readlines()]
             res = seq[randint(0, len(seq) - 1)]
             self._RANDOM_WORD = res
-        return self._RANDOM_WORD
+
 
     def add_word_to_base(self, data: SingleWord):
         """
@@ -101,4 +101,6 @@ if __name__ == '__main__':
     wb(sw3)
     wb(sw2)
     wb(sw3)
-    # print(wb._RANDOM_WORD)
+    wb.get_random_word()
+    print(wb._RANDOM_WORD)
+
