@@ -1,4 +1,14 @@
-arrs = ['10', 'a', '20', '40', '80', 'b']
+def check_availability(data, arrange):
+    flag = True
+    with open(arrange, 'r') as file:
+        res = file.readlines()
+        for i in res:
+            if data in i:
+                flag = False
+    for i in res:
+        print(i)
+    return flag
 
-res = [int(a) for a in arrs if a.isdigit()]
-print(res)
+
+
+print(check_availability('ordnung', 'try.txt'))

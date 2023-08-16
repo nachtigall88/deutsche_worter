@@ -7,6 +7,7 @@ class SingleWord:
     """
     клас для опису блока даних для запису в базу даних
     """
+
     def __init__(self, word, translation, article=None):
         self.article = article
         self.word = word
@@ -33,7 +34,7 @@ class WordBase:
         :param data: SingleWord instance
         :return: WordBase.add_word_to_base(data)
         """
-        return self.add_word_to_base(data)
+        self.add_word_to_base(data)
 
     def __init__(self):
         """
@@ -49,9 +50,9 @@ class WordBase:
         створює файл-базу даних для зберігання і використання даних
         :return:
         """
-        if not self.my_txt_base:
-            with open(self.my_txt_base, 'w',encoding='UTF-8') as file:
-                return
+        # if not self.my_txt_base:
+        with open(self.my_txt_base, 'w', encoding='UTF-8') as file:
+            return
 
     def get_random_word(self):
         """
@@ -64,22 +65,40 @@ class WordBase:
             self._RANDOM_WORD = res
         return self._RANDOM_WORD
 
-
-    def add_word_to_base(self, data:'SingleWord'):
+    def add_word_to_base(self, data: SingleWord):
         """
         функція для додавання інформації у базу даних
         :param data: SingleWord instance
         :return:
         """
         with open(self.my_txt_base, 'a+') as file:
-            res = file.readlines()
-            if any(map(lambda x: data.word in x, [x for x in res])):
-                file.write(f'{data.article}, {data.word}, {data.translation}\n')
+            if self.check_availability(data.word, self.my_txt_base):
+                res = f'{data.article}, {data.word}, {data.translation}\n'
+                file.writelines(res)
+
+    def check_availability(self, data, arrange):
+        flag = True
+        with open(arrange, 'r') as file:
+            res = [x for x in file.readlines()]
+            for i in res:
+                if data in i:
+                    flag = False
+        return flag
 
 
 if __name__ == '__main__':
     wb = WordBase()
-    sw = SingleWord('richtig', 'вірно')
-    print(sw)
+    # wb.make_txt_base()
+    # sw = SingleWord('richtig', 'вірно')
+    # sw1 = SingleWord('Buch', 'книга','das')
+    sw = SingleWord('Buch', 'книга', 'das')
+    sw1 = SingleWord('Madchen', 'дівча', 'das')
+    sw2 = SingleWord('Fehler', 'помилка', 'der')
+    sw3 = SingleWord('brauchen', 'потребувати')
     wb(sw)
-    print(wb._RANDOM_WORD)
+    wb(sw1)
+    wb(sw2)
+    wb(sw3)
+    wb(sw2)
+    wb(sw3)
+    # print(wb._RANDOM_WORD)

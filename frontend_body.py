@@ -1,6 +1,7 @@
 """модуль для формування виконавчого інтерфейсу на tkinter"""
 import tkinter as tk
 from tkinter import ttk
+# from main_body import *
 
 
 def rule_entries():
@@ -48,4 +49,12 @@ enabler = tk.Checkbutton(root, text='enable/disable', bg='black', fg='red', acti
 enabler.grid(row=7, column=2)
 
 if __name__ == '__main__':
-    root.mainloop()
+    # wb = WordBase()
+    # sw = SingleWord('Buch', 'книга', 'das')
+    # sw2 = SingleWord('Kugel', 'куля', 'das')
+    # sw3 = SingleWord('Madchen', 'дівча', 'das')
+    # sw4 = SingleWord('Lehrer', 'книга', 'der')
+    # sw5 = SingleWord('richtig', 'вірно')
+    # for i in [sw, sw2, sw3, sw4, sw5]:
+    #     wb(i)
+    # root.mainloop()
