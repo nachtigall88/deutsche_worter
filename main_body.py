@@ -50,9 +50,11 @@ class WordBase:
         створює файл-базу даних для зберігання і використання даних
         :return:
         """
-        # if not self.my_txt_base:
-        with open(self.my_txt_base, 'w', encoding='UTF-8') as file:
-            return
+        try:
+            with open(self.my_txt_base, 'x', encoding='UTF-8') as file:
+                return
+        except FileExistsError:
+            pass
 
     def get_random_word(self):
         """
@@ -63,7 +65,7 @@ class WordBase:
             seq = [x for x in file.readlines()]
             res = seq[randint(0, len(seq) - 1)]
             self._RANDOM_WORD = res
-
+        return self._RANDOM_WORD
 
     def add_word_to_base(self, data: SingleWord):
         """
@@ -86,21 +88,15 @@ class WordBase:
         return flag
 
 
-if __name__ == '__main__':
-    wb = WordBase()
-    # wb.make_txt_base()
-    # sw = SingleWord('richtig', 'вірно')
-    # sw1 = SingleWord('Buch', 'книга','das')
-    sw = SingleWord('Buch', 'книга', 'das')
-    sw1 = SingleWord('Madchen', 'дівча', 'das')
-    sw2 = SingleWord('Fehler', 'помилка', 'der')
-    sw3 = SingleWord('brauchen', 'потребувати')
-    wb(sw)
-    wb(sw1)
-    wb(sw2)
-    wb(sw3)
-    wb(sw2)
-    wb(sw3)
-    wb.get_random_word()
-    print(wb._RANDOM_WORD)
+# wb = WordBase()
+# sw = SingleWord('Buch', 'книга', 'das')
+# sw1 = SingleWord('Madchen', 'дівча', 'das')
+# sw2 = SingleWord('Fehler', 'помилка', 'der')
+# sw3 = SingleWord('brauchen', 'потребувати')
+# wb(sw)
+# wb(sw1)
+# wb(sw2)
+# wb(sw3)
+# wb.get_random_word()
+# print(wb._RANDOM_WORD)
 

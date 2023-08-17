@@ -12,3 +12,9 @@ def check_availability(data, arrange):
 
 
 print(check_availability('ordnung', 'try.txt'))
+'''
+das, Buch, книга
+das, Madchen, дівча
+der, Fehler, помилка
+None, brauchen, потребувати
+'''

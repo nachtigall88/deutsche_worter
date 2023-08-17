@@ -1,9 +1,9 @@
 """модуль для формування виконавчого інтерфейсу на tkinter"""
 import tkinter as tk
 from tkinter import ttk
-# from main_body import *
+from main_body import *
 
-
+wb = WordBase()
 def rule_entries():
     """
     функція для ввімкнення/вимкнення ентрі-полів для вводу інформації ""
@@ -23,13 +23,14 @@ photo = tk.PhotoImage(file='germ.png')
 root.iconphoto(False, photo)
 root.config(bg='black')
 
-word_label2 = tk.Label(root, text='WORD', bg='black', fg='yellow', font=('Arial', 20, 'bold'), width=25, height=3)
-word_label2.grid(row=2, column=1)
-click_button = tk.Button(root, text='CLICK', bg='red', fg='black', font=('Arial', 20, 'bold'), width=10, height=1)
+click_button = tk.Button(root, text='CLICK', bg='red', fg='black', font=('Arial', 20, 'bold'), width=10, height=1, \
+                         command=lambda: (tk.Label(root, text=f'{wb.get_random_word()}'.split(",")[-1], bg='black',
+                                                  fg='yellow', font=('Arial', 20, 'bold'), width=25,
+                                                  height=3).grid(row=2, column=1),
+                         ttk.Combobox(root, values=[f'{wb._RANDOM_WORD.split(",")[0]}', f'{wb._RANDOM_WORD.split(",")[1]}']).grid(row=3, column=1)))
 click_button.grid(row=2, column=2)
-hint_combobox = ttk.Combobox(root, values=[' ', 'article', 'my hint'])
-hint_combobox.current(0)
-hint_combobox.grid(row=3, column=1)
+
+# hint_combobox.current(0)
 frame = tk.LabelFrame(root, text='isert data', fg='yellow', bg='black')
 frame.grid(row=7, column=1)
 empty_label = tk.Label(text='empty data', bg='black', fg='black', height=5)
@@ -50,12 +51,4 @@ enabler = tk.Checkbutton(root, text='enable/disable', bg='black', fg='red', acti
 enabler.grid(row=7, column=2)
 
 if __name__ == '__main__':
-    # wb = WordBase()
-    # sw = SingleWord('Buch', 'книга', 'das')
-    # sw2 = SingleWord('Kugel', 'куля', 'das')
-    # sw3 = SingleWord('Madchen', 'дівча', 'das')
-    # sw4 = SingleWord('Lehrer', 'книга', 'der')
-    # sw5 = SingleWord('richtig', 'вірно')
-    # for i in [sw, sw2, sw3, sw4, sw5]:
-    #     wb(i)
     root.mainloop()
