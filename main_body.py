@@ -73,19 +73,11 @@ class WordBase:
         :param data: SingleWord instance
         :return:
         """
-        with open(self.my_txt_base, 'a+') as file:
-            if self.check_availability(data.word, self.my_txt_base):
-                res = f'{data.article}, {data.word}, {data.translation}\n'
-                file.writelines(res)
+        with open(self.my_txt_base, 'a') as file:
+            res = f'{data.article}, {data.word}, {data.translation}\n'
+            file.writelines(res)
 
-    def check_availability(self, data, arrange):
-        flag = True
-        with open(arrange, 'r') as file:
-            res = [x for x in file.readlines()]
-            for i in res:
-                if data in i:
-                    flag = False
-        return flag
+
 
 
 # wb = WordBase()

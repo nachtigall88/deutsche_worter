@@ -4,6 +4,8 @@ from tkinter import ttk
 from main_body import *
 
 wb = WordBase()
+
+
 def rule_entries():
     """
     функція для ввімкнення/вимкнення ентрі-полів для вводу інформації ""
@@ -16,6 +18,23 @@ def rule_entries():
             i.config(state='disabled')
 
 
+def insert_data():
+    """
+    функція для запису даних у файл після вводу їх в entry-поля
+    :param func:
+    :return:
+    """
+    if art_cb.get() == '---':
+        my_word = SingleWord(word_entry.get(), transl_entry.get())
+    else:
+        my_word = SingleWord(word_entry.get(), transl_entry.get(), art_cb.get())
+    print(my_word)
+    wb.add_word_to_base(my_word)
+    for i in [word_entry, transl_entry]:
+        i.delete(0, len(i.get()))
+    art_cb.current(0)
+
+
 root = tk.Tk()
 root.title('DEUTSCHE WORTER')
 root.geometry('800x500+60+20')
@@ -25,9 +44,11 @@ root.config(bg='black')
 
 click_button = tk.Button(root, text='CLICK', bg='red', fg='black', font=('Arial', 20, 'bold'), width=10, height=1, \
                          command=lambda: (tk.Label(root, text=f'{wb.get_random_word()}'.split(",")[-1], bg='black',
-                                                  fg='yellow', font=('Arial', 20, 'bold'), width=25,
-                                                  height=3).grid(row=2, column=1),
-                         ttk.Combobox(root, values=[f'{wb._RANDOM_WORD.split(",")[0]}', f'{wb._RANDOM_WORD.split(",")[1]}']).grid(row=3, column=1)))
+                                                   fg='yellow', font=('Arial', 20, 'bold'), width=25,
+                                                   height=3).grid(row=2, column=1),
+                                          ttk.Combobox(root, values=[f'{wb._RANDOM_WORD.split(",")[0]}',
+                                                                     f'{wb._RANDOM_WORD.split(",")[1]}']).grid(row=3,
+                                                                                                               column=1)))
 click_button.grid(row=2, column=2)
 
 # hint_combobox.current(0)
@@ -42,7 +63,7 @@ word_entry = tk.Entry(frame, width=20, state='disabled')
 word_entry.grid(row=0, column=2)
 transl_entry = tk.Entry(frame, width=20, state='disabled')
 transl_entry.grid(row=0, column=3)
-insert_button = tk.Button(frame, text='INSERT', bg='black', fg='yellow')
+insert_button = tk.Button(frame, text='INSERT', bg='black', fg='yellow', command=insert_data)
 insert_button.grid(row=6, column=3)
 varint = tk.IntVar()
 enabler = tk.Checkbutton(root, text='enable/disable', bg='black', fg='red', activebackground='black',
