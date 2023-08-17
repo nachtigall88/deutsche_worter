@@ -1,0 +1,7 @@
+das, Buch, книга
+das, Madchen, дівча
+der, Fehler, помилка
+None, brauchen, потребувати
+die, Stunde, урок
+das, Baum, дерево
+der, Kugelschreiber, авторучка

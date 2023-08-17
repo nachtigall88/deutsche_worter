@@ -73,3 +73,5 @@ enabler.grid(row=7, column=2)
 
 if __name__ == '__main__':
     root.mainloop()
+else:
+    raise SystemExit('this is not a library!')

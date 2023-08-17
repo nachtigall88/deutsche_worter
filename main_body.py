@@ -1,7 +1,7 @@
 """модуль для описання головної логіки роботи застосунку"""
 import random
 from random import randint
-
+# from frontend_body import *
 
 class SingleWord:
     """
@@ -79,16 +79,6 @@ class WordBase:
 
 
 
-
-# wb = WordBase()
-# sw = SingleWord('Buch', 'книга', 'das')
-# sw1 = SingleWord('Madchen', 'дівча', 'das')
-# sw2 = SingleWord('Fehler', 'помилка', 'der')
-# sw3 = SingleWord('brauchen', 'потребувати')
-# wb(sw)
-# wb(sw1)
-# wb(sw2)
-# wb(sw3)
-# wb.get_random_word()
-# print(wb._RANDOM_WORD)
+# if __name__ == '__main__':
+#     rule_entries()
 
