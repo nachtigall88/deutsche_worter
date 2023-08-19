@@ -28,7 +28,7 @@ def insert_data():
         my_word = SingleWord(word_entry.get(), transl_entry.get())
     else:
         my_word = SingleWord(word_entry.get(), transl_entry.get(), art_cb.get())
-    print(my_word)
+    #print(my_word)
     wb.add_word_to_base(my_word)
     for i in [word_entry, transl_entry]:
         i.delete(0, len(i.get()))
